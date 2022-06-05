@@ -1,0 +1,35 @@
+Index: JavaAssignment1/src/chapter4/RollingTheDieGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package chapter4;\r\n\r\nimport java.util.Random;\r\n\r\npublic class RollingTheDieGame {\r\n    public static void main(String args[]) {\r\n        int lastSpace = 20;\r\n        int currentSpace = 0;\r\n        int maxRolls = 5;\r\n        Random random = new Random();\r\n        System.out.println(\"Welcome to the Rolling Die Game.. let`s begin\");\r\n        for (int i = 1; i<=maxRolls ; i++) {\r\n            int die = random.nextInt(6)+1;\r\n            currentSpace = currentSpace + die;\r\n            System.out.print(String.format(\"Roll #%d: You've rolled a %d. \", i, die));\r\n\r\n            if (currentSpace == lastSpace) {\r\n                System.out.print(\"You are in space \" + currentSpace + \"Congrats You`ve WON\");\r\n                break;\r\n            }\r\n               else if (currentSpace > lastSpace){\r\n                   System.out.println(\"You lose, You are in Space \"+ lastSpace);\r\n                   break;\r\n                }  else if(i==maxRolls && currentSpace < lastSpace){\r\n                System.out.println(\"You're on space \" + currentSpace + \".\");\r\n                System.out.println(\"Unfortunately, you didn't make it to all \" +\r\n                        lastSpace + \" spaces. You lose!\");\r\n            }\r\n            else{\r\n                int spacesToGo = lastSpace - currentSpace;\r\n                System.out.print(\"You are now on space \" + currentSpace +\r\n                        \" and have \" + spacesToGo + \" more to go.\");\r\n            }\r\n\r\n            System.out.println();\r\n        }\r\n        }\r\n    }\r\n
+===================================================================
+diff --git a/JavaAssignment1/src/chapter4/RollingTheDieGame.java b/JavaAssignment1/src/chapter4/RollingTheDieGame.java
+--- a/JavaAssignment1/src/chapter4/RollingTheDieGame.java	
++++ b/JavaAssignment1/src/chapter4/RollingTheDieGame.java	
+@@ -3,7 +3,7 @@
+ import java.util.Random;
+ 
+ public class RollingTheDieGame {
+-    public static void main(String args[]) {
++    public static void main(String [] args) {
+         int lastSpace = 20;
+         int currentSpace = 0;
+         int maxRolls = 5;
+@@ -12,7 +12,7 @@
+         for (int i = 1; i<=maxRolls ; i++) {
+             int die = random.nextInt(6)+1;
+             currentSpace = currentSpace + die;
+-            System.out.print(String.format("Roll #%d: You've rolled a %d. ", i, die));
++           // System.out.print(String.format("Roll #%d: You've rolled a %d. ", i, die));
+ 
+             if (currentSpace == lastSpace) {
+                 System.out.print("You are in space " + currentSpace + "Congrats You`ve WON");
+@@ -21,7 +21,7 @@
+                else if (currentSpace > lastSpace){
+                    System.out.println("You lose, You are in Space "+ lastSpace);
+                    break;
+-                }  else if(i==maxRolls && currentSpace < lastSpace){
++                }  else if(i==maxRolls){
+                 System.out.println("You're on space " + currentSpace + ".");
+                 System.out.println("Unfortunately, you didn't make it to all " +
+                         lastSpace + " spaces. You lose!");
