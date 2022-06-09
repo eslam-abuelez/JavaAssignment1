@@ -5,14 +5,14 @@ import java.util.Scanner;
 public class Break {
     public static void main (String [] args){
         Scanner input = new Scanner(System.in);
-        int counter = 0, sum = 0, num;
-       while (counter<= 7){
+        int counter = 1, sum = 0, num;
+       while (counter<= 3){
 
-           System.out.println("Enter your positive number:");
+           System.out.println("Enter your positive number:" + counter);
            num = input.nextInt();
            if (num <0){
                System.out.println("Negative numbers are not allowed");
-               break;
+               continue;
            }
            sum = sum + num;
            counter ++;
